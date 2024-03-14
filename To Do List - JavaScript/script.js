@@ -3,8 +3,9 @@ const inputkeyword = document.querySelector(".input-keyword");
 const notif = document.querySelector(".notif");
 const taskcontainer = document.querySelector(".task-container");
 
+//add task while we put value in text and press BUTTON
 btnadd.addEventListener("click", function () {
-  const KValue = inputkeyword.value;
+  const KValue = inputkeyword.value.trim(); //trim menghapus space di depan value dan balik ke depan input value // mengabaikan space di depan
   if (KValue === "") {
     showalert("Enter Your task!", "danger");
   }
@@ -14,7 +15,6 @@ btnadd.addEventListener("click", function () {
     createTask(KValue);
     showalert("Your task has been added!", "succes");
   }
-
   KValue.innerHTML = "";
 });
 
@@ -22,17 +22,30 @@ function createTask(KValue) {
   const li = document.createElement("li");
 
   li.innerHTML = template(KValue);
-
   taskcontainer.appendChild(li);
+
+  li.addEventListener("click", function () {
+    this.classList.toggle("licheck");
+    this.children[0].checked = this.children[0].checked ? false : true;
+  });
+}
+
+function deleteTask(e) {
+  e.parentElement.parentElement.remove();
+  showalert("one item was removed", "danger");
+}
+
+function check(e) {
+  e.parentElement.classList.toggle("licheck");
 }
 
 function template(KValue) {
   return `    
-                    <input type="checkbox" class="check" />
+                    <input type="checkbox" name="status"  onclick="check(this)" />
                     <p class="text">${KValue}</p>
                     <div class="button">
                     <i class="bx bx-edit edit"></i>
-                    <i class="bx bxs-trash trash"></i>
+                    <i class="bx bxs-trash trash" onclick="deleteTask(this)"></i>
                     </div>
                     `;
 }
@@ -43,7 +56,8 @@ function showalert(message, style) {
   notif.classList.remove("hidden");
 
   setTimeout(() => {
-    notif.classList.remove(style);
     notif.classList.add("hidden");
+    notif.style.color = "whitesmoke";
+    notif.classList.remove(style);
   }, 1000);
 }

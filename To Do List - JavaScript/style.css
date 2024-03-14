@@ -45,12 +45,15 @@
 
 .card .add input {
   width: 100%;
-  padding-block: 8px;
+  padding-block: 0px;
   outline: none;
   background: none;
   border: none;
   border-bottom: 2px solid #d4d4d4;
   transition: all 0.4s ease-in-out;
+  color: navy;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .card .add input:focus {
@@ -123,6 +126,12 @@
   opacity: 1;
 }
 
+.task-container {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
 ul li {
   list-style: none;
   padding: 10px 0px 10px 20px;
@@ -141,21 +150,11 @@ ul li .text {
   margin: 0 100px 0 15px;
   word-break: break-all;
 }
-ul li .check {
+ul li input {
   width: 15px;
   height: 15px;
-  background-color: white;
   border: 1px solid #ddd;
-  cursor: pointer;
-}
-
-ul li .check:checked {
-  background-color: blue;
-}
-
-ul li .text.checked {
-  text-decoration: line-through;
-  color: #555;
+  pointer-events: none;
 }
 
 ul li .button {
@@ -165,8 +164,19 @@ ul li .button {
   transform: translateY(-50%);
 }
 
+ul li.licheck .edit {
+  visibility: hidden;
+}
+
+ul li.licheck {
+  text-decoration: line-through;
+  background-color: #e2e2e2;
+  border: 1px solid navy;
+  color: #ffffff;
+}
+
 ul li i {
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   color: white;
   padding: 0.1rem;
   margin: 0 5px;
@@ -179,4 +189,19 @@ ul li .trash {
 }
 ul li .edit {
   background-color: green;
+}
+
+/* ==============scroll bar ======================= */
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background: #d1e5ff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 128, 0.658);
+  border-radius: 20px;
 }
