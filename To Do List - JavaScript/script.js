@@ -15,7 +15,7 @@ btnadd.addEventListener("click", function () {
     createTask(KValue);
     showalert("Your task has been added!", "succes");
   }
-  KValue.innerHTML = "";
+  inputkeyword.value = "";
 });
 
 function createTask(KValue) {
@@ -23,10 +23,12 @@ function createTask(KValue) {
 
   li.innerHTML = template(KValue);
   taskcontainer.appendChild(li);
+  const text = li.children[1];
 
-  li.addEventListener("click", function () {
-    this.classList.toggle("licheck");
-    this.children[0].checked = this.children[0].checked ? false : true;
+  text.addEventListener("click", function () {
+    li.classList.toggle("licheck");
+    const checkbox = this.previousElementSibling;
+    checkbox.checked = checkbox.checked ? false : true;
   });
 }
 
@@ -39,12 +41,20 @@ function check(e) {
   e.parentElement.classList.toggle("licheck");
 }
 
+function editTask(e) {
+  const text = e.parentElement.previousElementSibling;
+  inputkeyword.value = text.textContent;
+
+  const btnCancel = document.querySelector(".btn-cancel");
+  btnCancel.classList.toggle("active");
+}
+
 function template(KValue) {
   return `    
                     <input type="checkbox" name="status"  onclick="check(this)" />
                     <p class="text">${KValue}</p>
                     <div class="button">
-                    <i class="bx bx-edit edit"></i>
+                    <i class="bx bx-edit edit" onclick="editTask(this)"></i>
                     <i class="bx bxs-trash trash" onclick="deleteTask(this)"></i>
                     </div>
                     `;
