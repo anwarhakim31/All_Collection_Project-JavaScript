@@ -169,6 +169,7 @@ ul li input {
   width: 15px;
   height: 15px;
   border: 1px solid #ddd;
+  padding: 15px;
 }
 
 ul li .button {
@@ -188,6 +189,12 @@ ul li.licheck {
 
   color: #ffffff;
 }
+ul li.active {
+  text-decoration: none;
+  background-color: rgb(255, 255, 255);
+
+  color: navy;
+}
 
 ul li i {
   font-size: 1.25rem;
@@ -198,7 +205,8 @@ ul li i {
 }
 
 .d-none {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 ul li .trash {
