@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  background: linear-gradient(135deg, rgb(0, 81, 255), rgb(0, 173, 145));
+  width: 100%;
+  height: 100vh;
+  padding: 10px;
+}
+
+.card {
+  background-color: whitesmoke;
+  width: 90%;
+  max-width: 450px;
+  padding: 1rem;
+  margin: 100px auto 0;
+  color: navy;
+  border-radius: 16px;
+  position: relative;
+}
+
+.card h1 {
+  display: flex;
+  align-items: center;
+}
+.card h1 img {
+  height: 30px;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.card .add {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.card .add input {
+  width: 100%;
+  padding-block: 8px;
+  outline: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid #d4d4d4;
+  transition: all 0.4s ease-in-out;
+}
+
+.card .add input:focus {
+  border-bottom: 2px solid navy;
+}
+.card .add label {
+  position: absolute;
+  left: 0;
+  pointer-events: none;
+  font-size: 1rem;
+  transition: all 0.4s ease;
+}
+.card .add input:focus ~ label,
+.card .add input:valid ~ label {
+  transform: translateY(-20px);
+  font-size: 0.8rem;
+  color: burlywood;
+}
+
+.card .add button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0.5rem 2rem;
+  background-color: navy;
+  color: white;
+  border-radius: 10px;
+}
+
+.card .alert {
+  width: 80%;
+  height: 30px;
+
+  margin: 5px auto;
+}
+
+.notif {
+  text-align: center;
+  padding: 0.5rem 0;
+  border-radius: 8px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.5s ease-in;
+}
+
+.notif.danger {
+  background-color: red;
+
+  display: block;
+  opacity: 1;
+}
+
+.notif.hidden {
+  display: block;
+  opacity: 0;
+}
+
+.notif.succes {
+  background-color: green;
+  display: block;
+
+  opacity: 1;
+}
+
+ul li {
+  list-style: none;
+  padding: 10px 0px 10px 20px;
+  cursor: pointer;
+  border: 1px solid #d4d4d4;
+  margin: 1rem 0;
+  border-radius: 3rem;
+  /* user-select: none; */
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+}
+
+ul li .text {
+  margin: 0 100px 0 15px;
+  word-break: break-all;
+}
+ul li .check {
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+ul li .check:checked {
+  background-color: blue;
+}
+
+ul li .text.checked {
+  text-decoration: line-through;
+  color: #555;
+}
+
+ul li .button {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  transform: translateY(-50%);
+}
+
+ul li i {
+  font-size: 1.75rem;
+  color: white;
+  padding: 0.1rem;
+  margin: 0 5px;
+  border-radius: 5px;
+}
+
+ul li .trash {
+  margin-right: 15px;
+  background-color: crimson;
+}
+ul li .edit {
+  background-color: green;
+}
