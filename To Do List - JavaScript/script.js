@@ -10,12 +10,15 @@ let editflag = false;
 let editelement; //undifined//untuk nilaimembuat variabel menjadi global
 let editID; //undifined
 let LSkey = "item";
+let stat = 0;
 
 document.addEventListener("DOMContentLoaded", function () {
   let items = getLS();
 
-  items.forEach(({ KValue, id }) => {
+  items.forEach(({ KValue, id, stat }) => {
     createTask(KValue, id);
+    // li = createTask();
+    // console.log(li);
   });
 });
 
@@ -48,38 +51,42 @@ btnadd.addEventListener("click", function () {
 btnCancel.addEventListener("click", function () {
   editflag = false;
   editelement = undefined;
-  const taskbutton = document.querySelectorAll(".button");
-  taskbutton.forEach((button) => {
-    button.classList.remove("d-none");
-  });
-  this.classList.remove("active");
+  editID = undefined;
 
+  const editIcons = document.querySelectorAll(".edit");
+  const deleteIcons = document.querySelectorAll(".trash");
   const inputcheck = document.querySelectorAll(".input-check");
-  inputcheck.forEach((check) => check.classList.remove("d-none"));
 
-  btnadd.textContent = "Add";
-
-  const ul = document.querySelector("ul");
-  const lis = ul.childNodes;
-  lis.forEach((ul) => {
-    ul.style.background = "white";
+  // Tampilkan kembali semua tombol edit dan tombol hapus
+  editIcons.forEach((icon) => {
+    icon.classList.remove("d-none");
   });
+
+  deleteIcons.forEach((icon) => {
+    icon.classList.remove("d-none");
+  });
+
+  inputcheck.forEach((icon) => {
+    icon.classList.remove("d-none");
+  });
+  btnadd.textContent = "Add";
 });
 
 function createTask(KValue, id) {
   const li = document.createElement("li");
   li.setAttribute("data-id", id);
-  li.innerHTML = template(KValue);
+
+  // Get stat value from Local Storage
+  const items = getLS();
+  const foundItem = items.find((item) => item.id === id);
+  const statValue = foundItem ? foundItem.stat : 0;
+
+  // Set the class name based on the stat value
+  li.className = statValue === 1 ? "input-check licheck" : "input-check";
+  const isChecked = statValue === 1 ? "checked" : "";
+  li.innerHTML = template(KValue, isChecked);
 
   taskcontainer.appendChild(li);
-  // const text = li.children[1];
-
-  // text.addEventListener("click", function () {
-  //   li.classList.toggle("licheck");
-
-  //   const checkbox = this.previousElementSibling;
-  //   checkbox.checked = checkbox.checked ? false : true;
-  // });
 }
 
 function deleteTask(e) {
@@ -94,7 +101,18 @@ function deleteTask(e) {
 }
 
 function check(e) {
-  e.parentElement.classList.toggle("licheck");
+  const li = e.parentElement;
+  li.classList.toggle("licheck");
+  const getID = li.dataset.id;
+  const text = e.nextElementSibling.textContent;
+
+  const btncheck = e.checked;
+
+  //menjadikan status menjadi 1 dan 0
+  checkLS(btncheck, getID, text);
+  //    const btncheck = document.querySelectorAll(".input-check");
+
+  //    btncheck.forEach();
 }
 
 function editTask(e) {
@@ -104,6 +122,7 @@ function editTask(e) {
 
   editID = li.dataset.id;
 
+  console.log(editID);
   inputkeyword.value = text.textContent;
 
   editelement = text;
@@ -111,28 +130,27 @@ function editTask(e) {
   const btnCancel = document.querySelector(".btn-cancel");
   btnCancel.classList.add("active");
 
-  const taskbutton = document.querySelectorAll(".button");
-  taskbutton.forEach((button) => {
-    button.classList.add("d-none");
+  const editIcons = document.querySelectorAll(".edit");
+  const deleteIcons = document.querySelectorAll(".trash");
+  const inputcheck = document.querySelectorAll(".task-container input");
+  // Sembunyikan semua tombol edit dan tombol hapus
+  editIcons.forEach((icon) => {
+    icon.classList.add("d-none");
   });
 
-  const inputcheck = document.querySelectorAll(".input-check");
-  inputcheck.forEach((check) => check.classList.add("d-none"));
+  deleteIcons.forEach((icon) => {
+    icon.classList.add("d-none");
+  });
+  inputcheck.forEach((icon) => {
+    icon.classList.add("d-none");
+  });
 
   btnadd.textContent = "Edit";
-
-  const ul = document.querySelector("ul");
-  const lis = ul.childNodes;
-  lis.forEach((ul) => {
-    ul.style.background = "#414141bd";
-  });
-
-  li.style.background = "white";
 }
 
-function template(KValue) {
+function template(KValue, isChecked) {
   return `    
-                    <input class="input-check" type="checkbox" name="status"  onclick="check(this)" />
+                    <input  type="checkbox" ${isChecked} name="status"  onclick="check(this)"  class="input-check"/>
                     <p class="text">${KValue}</p>
                     <div class="button">
                     <i class="bx bx-edit edit" onclick="editTask(this)"></i>
@@ -156,7 +174,7 @@ function showalert(message, style) {
 /////////////////===========Local Storage=================//////////////////////
 
 function addLS(KValue, id) {
-  obj = { id, KValue };
+  obj = { id, KValue, stat };
 
   let items = getLS();
 
@@ -210,6 +228,26 @@ function editLS(KValue, editID) {
   //     items.splice(index, 1);
   //   }
   // });
+}
+
+function checkLS(btncheck, getID, text) {
+  let items = getLS();
+
+  items.forEach((item, index) => {
+    if (btncheck == true && item.id == getID) {
+      items.splice(index, 1, {
+        id: getID,
+        KValue: text,
+        stat: 1,
+      });
+    } else if (btncheck == false && item.id == getID) {
+      items.splice(index, 1, {
+        id: getID,
+        KValue: text,
+        stat: 0,
+      });
+    }
+  });
 
   localStorage.setItem(LSkey, JSON.stringify(items));
 }

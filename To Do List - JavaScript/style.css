@@ -164,12 +164,15 @@ ul li .text {
   width: 100%;
   height: 100%;
   padding: 10px;
+  padding-left: 19px;
 }
 ul li input {
   width: 15px;
   height: 15px;
   border: 1px solid #ddd;
   padding: 15px;
+  /* pointer-events: none; */
+  position: absolute;
 }
 
 ul li .button {
@@ -187,7 +190,11 @@ ul li.licheck {
   text-decoration: line-through;
   background-color: #414141bd;
 
-  color: #ffffff;
+  color: navy;
+}
+
+ul li .text.check {
+  pointer-events: none;
 }
 
 ul li i {
