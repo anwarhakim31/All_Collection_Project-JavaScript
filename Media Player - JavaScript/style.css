@@ -22,6 +22,7 @@
   background-color: whitesmoke;
   border: 1px solid slategrey;
   position: relative;
+  overflow: hidden;
 }
 
 .header {
@@ -30,9 +31,10 @@
   align-items: center;
 }
 
-.header .down {
+.header .toggle {
   font-size: 30px;
   font-weight: 400;
+  cursor: pointer;
 }
 
 .header span {
@@ -61,6 +63,10 @@
   padding: 1rem;
 }
 
+.details.hidden {
+  display: none;
+}
+
 .details .detail-img {
   width: 100%;
   height: 256px;
@@ -72,6 +78,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: inherit;
 }
 
 .details .detail-song {
@@ -143,8 +150,13 @@
   background: linear-gradient(90deg, rgb(29, 127, 255) 0%, #19437d) 100%;
   border-radius: 50%;
   background-clip: text;
+  cursor: pointer;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.controls span:hover {
+  transform: scale(1.1);
 }
 
 .controls span:nth-child(2),
@@ -194,22 +206,23 @@
 
 .music-list {
   position: absolute;
-  bottom: 0;
   left: 0;
+  bottom: -55%;
   width: 100%;
-  height: 60%;
   background-color: #fefefe;
   user-select: none;
   border-radius: inherit;
-  padding: 3rem 2rem;
-  overflow: hidden;
+  padding: 1rem 1.5rem;
   opacity: 0;
   pointer-events: none;
+
+  transition: all 0.2s ease-out;
 }
 
 .list-show {
   opacity: 1;
   pointer-events: initial;
+  bottom: 0;
 }
 
 .music-list .header {
@@ -227,12 +240,13 @@
 .music-list .header .row {
   display: flex;
   align-items: center;
+  gap: 4px;
 }
 
 .music-list .content {
   margin-top: 20px;
   overflow-y: auto;
-  max-height: 100%;
+  max-height: 256px;
 }
 
 .content .music {
@@ -244,6 +258,10 @@
   padding-bottom: 5px;
   padding-right: 20px;
   cursor: pointer;
+}
+
+.music:nth-last-child {
+  padding-bottom: 10px;
 }
 
 .music .music-title span {
