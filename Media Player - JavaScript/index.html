@@ -24,7 +24,7 @@
     <div class="container">
       <div class="media-player">
         <div class="header">
-          <span class="material-symbols-outlined toggle"> expand_more </span>
+          <span class="material-symbols-outlined toggle">expand_more</span>
           <span>Now Playing</span>
           <div class="dots">
             <div class="dot"></div>
@@ -34,7 +34,7 @@
         </div>
         <div class="details">
           <div class="detail-img">
-            <img src="" alt="" />
+            <img src="images/music-0.jpg" alt="" />
           </div>
           <div class="detail-song">
             <h1 class="song-name"></h1>
@@ -45,18 +45,23 @@
           <div class="progress-area">
             <div class="progress-bar"></div>
             <div class="timer">
-              <span class="current">00:20</span>
-              <span class="current">04:00</span>
+              <span class="current">00:00</span>
+              <span class="durations">00:00</span>
             </div>
             <audio id="audio" src=""></audio>
           </div>
           <div class="controls">
-            <span class="material-symbols-outlined" id="repeat"> repeat </span>
+            <span
+              class="material-symbols-outlined"
+              id="repeat"
+              title="play-list"
+              >repeat</span
+            >
             <span class="material-symbols-outlined" id="prev">
               skip_previous
             </span>
             <div class="play-pause">
-              <span class="material-icons icon"> play_arrow </span>
+              <span class="material-icons icon">play_arrow</span>
             </div>
             <span class="material-symbols-outlined" id="next"> skip_next </span>
             <span class="material-symbols-outlined" id="queue">
@@ -75,20 +80,11 @@
             </div>
             <span class="material-symbols-outlined close"> close </span>
           </div>
-          <ul class="content">
-            <li class="music">
-              <div class="music-title">
-                <span class="song-name">Harley-Bird - Home</span>
-                <span class="artis">Jordan Schor</span>
-              </div>
-              <span class="duration"> 00.00 </span>
-            </li>
-          </ul>
+          <ul class="content"></ul>
         </div>
       </div>
     </div>
-
-    <script src="script.js"></script>
     <script src="music-list.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
