@@ -37,14 +37,11 @@ const musicImg = document.querySelector(".detail-img img"),
 window.addEventListener("DOMContentLoaded", function (e) {
   playingNow();
   loadMusic(musicIndex);
+
   obj = { musicIndex };
-
   let music = getLS();
-
   const newMusicindex = music[0];
-
   let indexLs = newMusicindex.musicIndex;
-
   loadMusic(indexLs);
 });
 

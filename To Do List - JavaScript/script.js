@@ -196,8 +196,6 @@ function deleteLS(id) {
 
   items.forEach((item, index) => {
     if (id === item.id) {
-      console.log(item.id);
-      console.log(id);
       items.splice(index, 1);
     }
   });
