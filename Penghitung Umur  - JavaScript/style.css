@@ -1,0 +1,121 @@
+:root {
+  --clr-neutral-200: white;
+  --clr-neutral-300: #d1d9e5;
+
+  --clr-primary-500: #19437d;
+  --fz-200: 1rem;
+  --fz-300: 1.5rem;
+  --fw-main: 300;
+  --pd-100: 1rem;
+  --pd-200: 2rem;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: var(--fz-200);
+  color: var(--clr-neutral-200);
+  background-color: var(--clr-neutral-300);
+}
+
+button {
+  cursor: pointer;
+}
+.container {
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.container .btn {
+  margin: 2rem 0;
+}
+
+.container .btnTahun {
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: crimson;
+  border: none;
+}
+.container .btnDetail {
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: crimson;
+  border: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.btn.active {
+  background-color: orange;
+  pointer-events: none;
+}
+
+.card {
+  width: 90%;
+  max-width: 350px;
+  padding: var(--pd-100);
+  background-color: var(--clr-primary-500);
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+  height: 400px;
+}
+
+.card h1 {
+  font-size: var(--fz-300);
+  padding: var(--pd-100);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.card p {
+  padding-bottom: var(--pd-100);
+}
+
+.form-area input {
+  width: 90%;
+  margin: auto;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  display: block;
+}
+
+.form-area button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.hasil {
+  margin-top: 1rem;
+}
+
+.detail {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+.container .btnTahuns {
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: crimson;
+  border: none;
+}

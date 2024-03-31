@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Penghitung umur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div role="container" class="container">
+      <div class="card tahun">
+        <button class="btnTahun btn active">Hitung Tahun</button>
+        <button class="btnDetail btn">Hitung Detail</button>
+        <h1>Hitung Umur Tahun</h1>
+        <p>Tahun Sekarang <span class="year"></span></p>
+
+        <form class="form-area">
+          <input
+            class="input"
+            type="number"
+            placeholder="Masukan tahun lahir anda!"
+          />
+          <button id="hitung">Hitung</button>
+          <button id="reset">Reset</button>
+        </form>
+
+        <p class="hasil">Anda Berusia <span class="umur">0</span> tahun</p>
+      </div>
+      <div class="card detail">
+        <button class="btnTahuns btn">Hitung Tahun</button>
+        <button class="btnDetail btn active">Hitung Detail</button>
+        <h1>Hitung Umur Detail</h1>
+        <p>
+          <span class="day">31</span>/ <span class="month">05</span> /
+          <span class="years">2001</span>
+        </p>
+        <form class="form-area">
+          <input
+            class="inputDetail"
+            type="date"
+            placeholder="Masukan tahun lahir anda!"
+          />
+          <button id="hitungD">Hitung</button>
+          <button id="resetD ">Reset</button>
+          <p class="hasil">
+            Umur Anda <span class="hasilT">0</span> Tahun,
+            <span class="hasilB">0</span> Bulan ,
+            <span class="hasilH">0</span> Hari
+          </p>
+        </form>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
