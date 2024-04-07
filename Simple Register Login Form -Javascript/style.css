@@ -8,6 +8,10 @@ body {
   background: linear-gradient(45deg, rgb(190, 29, 0), rgb(241, 89, 0));
   width: 100%;
   height: 100vh;
+
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
 }
 
 .container {
@@ -19,7 +23,7 @@ body {
   align-items: center;
 }
 
-.wrapper {
+.card {
   width: 100%;
   max-width: 350px;
   height: 460px;
@@ -27,8 +31,13 @@ body {
   background-color: whitesmoke;
   border-radius: 0.5rem;
   display: flex;
+}
+
+.wrapper {
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
 }
 
 .wrapper h1 {
@@ -38,8 +47,7 @@ body {
 }
 
 form {
-  flex: 1;
-
+  flex-grow: 1;
   align-content: center;
 }
 
@@ -86,13 +94,23 @@ form {
   color: navy;
 }
 
+.alert {
+  text-align: center;
+  color: red;
+  font-size: 1rem;
+  margin-bottom: 5px;
+  margin-top: 1.5rem;
+}
+
 button {
   background: linear-gradient(45deg, rgb(190, 29, 0), rgb(241, 89, 0));
   width: 100%;
   padding: 1rem 0;
-  margin-block: 2.5rem;
+  margin-top: auto;
   border: 0;
   cursor: pointer;
+  color: white;
+  font-weight: bold;
 }
 
 .btn-register {
@@ -106,14 +124,19 @@ button {
 }
 
 .register {
-  transform: translateX(300px);
   display: none;
-  transition: 0.3s linear;
+}
+
+.login {
+  display: flex;
 }
 
 .register.active {
-  transform: translateX(0);
-  display: block;
+  display: flex;
+}
+
+.login.hidden {
+  display: none;
 }
 
 .btn-login {
