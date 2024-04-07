@@ -4,14 +4,22 @@ const btnregister = document.querySelector(".btn-register");
 const btnlogin = document.querySelector(".btn-login");
 
 btnregister.addEventListener("click", function () {
-  register.classList.add("active");
-  login.classList.add("hidden");
+  regis();
 });
 
+function regis() {
+  register.classList.add("active");
+  login.classList.add("hidden");
+}
+
 btnlogin.addEventListener("click", function () {
+  log();
+});
+
+function log() {
   register.classList.remove("active");
   login.classList.remove("hidden");
-});
+}
 
 const Rusername = document.getElementById("Rusername");
 const Rpassword = document.getElementById("Rpassword");
@@ -19,8 +27,8 @@ const Confirm = document.getElementById("confirm-password");
 const submitRegister = document.getElementById("form-register");
 
 submitRegister.addEventListener("submit", function (e) {
-  const usernameValue = Rusername.value;
-  const passwordValue = Rpassword.value;
+  const usernameValue = Rusername.value.trim();
+  const passwordValue = Rpassword.value.trim();
   const isMatch = Confirm.value;
   const usernameRegex =
     /^(?=.*[!@#$%^&*()_0-9])(?=.*[!@#$%^&*()_a-zA-Z])[a-zA-Z0-9!@#$%^&*()_]+$/;
@@ -102,10 +110,60 @@ submitRegister.addEventListener("submit", function (e) {
   } else {
     alert("", Confirm, "grey");
     addLS(usernameValue, passwordValue);
-    swal("Succes", "Berhasil membuat akun", "success");
-    resetForm();
+
+    swal({
+      title: "Good job!",
+      text: "You clicked the button!",
+      icon: "success",
+      button: true,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result) {
+        resetForm();
+        log();
+      }
+    });
     return;
   }
+});
+
+const formlogin = document.getElementById("login-form");
+const username = document.getElementById("username");
+const password = document.getElementById("password");
+
+formlogin.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const usernamevalue = username.value.trim();
+  const passwordvalue = password.value.trim();
+
+  e.preventDefault();
+
+  const data = GetLS();
+
+  username.onkeyup = () => {
+    username.style.borderBottom = `3px solid grey`;
+    formlogin.focus();
+  };
+
+  password.onkeyup = () => {
+    password.style.borderBottom = `3px solid grey`;
+  };
+
+  data.filter((data) => {
+    if (data.username == usernamevalue && data.password == passwordvalue) {
+      window.location.href = "https://www.youtube.com";
+      return;
+    } else {
+      const showAlerts = document.querySelector(".alert");
+      showAlerts.innerHTML = "username atau password salah";
+      setTimeout(() => {
+        showAlerts.innerHTML = "";
+      }, 2000);
+
+      username.style.borderBottom = `3px solid crimson`;
+      password.style.borderBottom = `3px solid crimson`;
+    }
+  });
 });
 
 function addLS(username, password) {
@@ -125,8 +183,10 @@ function GetLS() {
 }
 
 const ShowAlert = document.querySelector(".alertRegister");
+
 function alert(info, input, color) {
   ShowAlert.innerHTML = info;
+
   input.style.borderBottom = `3px solid ${color}`;
   return info;
 }
