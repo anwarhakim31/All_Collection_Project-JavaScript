@@ -152,3 +152,33 @@ button {
 .btn-login:hover {
   text-decoration: underline;
 }
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forgot {
+  color: navy;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-login-regis {
+  color: crimson;
+  cursor: pointer;
+}
+
+.forgot-password {
+  display: none;
+}
+
+.forgot-password.active {
+  display: flex;
+}
+
+.btn-register-forgot {
+  color: crimson;
+  cursor: pointer;
+}

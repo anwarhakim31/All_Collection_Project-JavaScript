@@ -10,15 +10,34 @@ btnregister.addEventListener("click", function () {
 function regis() {
   register.classList.add("active");
   login.classList.add("hidden");
+  lupaPassword.classList.remove("active");
+  Falerts.innerHTML = "";
+  resetForm();
 }
 
 btnlogin.addEventListener("click", function () {
   log();
 });
 
+const loginRegis = document.querySelector(".btn-login-regis");
+
+loginRegis.addEventListener("click", function () {
+  log();
+});
+
+const regisForgot = document.querySelector(".btn-register-forgot");
+
+regisForgot.addEventListener("click", function () {
+  regis();
+  resetForm();
+});
+
 function log() {
   register.classList.remove("active");
   login.classList.remove("hidden");
+  lupaPassword.classList.remove("active");
+  Falerts.innerHTML = "";
+  resetForm();
 }
 
 const Rusername = document.getElementById("Rusername");
@@ -165,6 +184,81 @@ formlogin.addEventListener("submit", function (e) {
     }
   });
 });
+
+const lupaPassword = document.querySelector(".forgot-password");
+const forgot = document.querySelector(".forgot");
+
+forgot.addEventListener("click", function () {
+  lupaPassword.classList.add("active");
+  login.classList.add("hidden");
+  resetForm();
+});
+
+const fusername = document.getElementById("fusername");
+const fpassword = document.getElementById("fpassword");
+const forgotForm = document.getElementById("forgot-form");
+const Falerts = document.querySelector(".Falerts");
+
+forgotForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const usernameValue = fusername.value.trim();
+  const passwordValue = fpassword.value.trim();
+  const passwordRegex = /^(?=.*[0-9])(?=.*[a-zA-Z]).+$/;
+  const data = GetLS();
+  const newData = data.map((userData) => {
+    if (userData.username === usernameValue) {
+      if (passwordValue.length <= 5) {
+        alertforgot(
+          fpassword,
+          "Password harus lebih dari 5 karakter",
+          "crimson"
+        );
+        return;
+      } else if (!passwordRegex.test(passwordValue)) {
+        alertforgot(
+          fpassword,
+          "Password harus berisi setidaknya satu angka",
+          "crimson"
+        );
+        return;
+      } else if (passwordValue === usernameValue) {
+        alertforgot(
+          fpassword,
+          "Password tidak boleh sama dengan username",
+          "crimson"
+        );
+        return;
+      } else {
+        swal({
+          title: "Good job!",
+          text: "You clicked the button!",
+          icon: "success",
+          button: true,
+        }).then((result) => {
+          if (result) {
+            resetForm();
+            log();
+          }
+        });
+        fpassword.style.borderBottom = `3px solid grey`;
+        userData.password = passwordValue;
+        return userData;
+      }
+    } else {
+      alertforgot(fusername, "Username tidak ditemukan", "crimson");
+      return;
+    }
+  });
+
+  // Filter data untuk menghapus entri yang kosong
+
+  localStorage.setItem("akun", JSON.stringify(data));
+});
+
+function alertforgot(input, message, color) {
+  Falerts.innerHTML = message;
+  input.style.borderBottom = `3px solid ${color}`;
+}
 
 function addLS(username, password) {
   obj = { username, password };
