@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="login wrapper">
+        <h1>login</h1>
+        <form action="">
+          <div class="username">
+            <input type="text" name="username" id="username" required />
+            <label for="username">Username</label>
+          </div>
+          <div class="password">
+            <input type="password" name="password" id="password" required />
+            <label for="password">Password</label>
+          </div>
+        </form>
+        <button type="submit">Login</button>
+        <p>Belum punya akun?<a class="btn-register">Daftar</a></p>
+      </div>
+      <div class="register wrapper">
+        <h1>Register</h1>
+        <form action="">
+          <div class="username">
+            <input type="text" name="username" id="Rusername" required />
+            <label for="username">Username</label>
+          </div>
+          <div class="password">
+            <input type="text" name="password" id="Rpassword" required />
+            <label for="username">password</label>
+          </div>
+          <div class="confirm-password">
+            <input
+              type="password"
+              name="confirm-password"
+              id="confirm-password"
+              required
+            />
+            <label for="confirm-password">Confirm Password</label>
+          </div>
+        </form>
+        <button type="submit">Login</button>
+        <p>Sudah punya akun?<a class="btn-login">Login</a></p>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>

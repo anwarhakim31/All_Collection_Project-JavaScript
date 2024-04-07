@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(45deg, rgb(190, 29, 0), rgb(241, 89, 0));
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  max-width: 1280px;
+  height: 100%;
+  margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 350px;
+  height: 460px;
+  padding: 1.5rem;
+  background-color: whitesmoke;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.wrapper h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: crimson;
+}
+
+form {
+  flex: 1;
+
+  align-content: center;
+}
+
+.wrapper .username {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.wrapper .password {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-block: 1.5rem;
+}
+
+.wrapper input {
+  padding: 0.5rem;
+  border: 0;
+  background-color: whitesmoke;
+  border-bottom: 3px solid grey;
+  outline: none;
+}
+
+.confirm-password {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.wrapper label {
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  font-weight: 100;
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+
+.wrapper input:is(:focus, :valid) ~ label {
+  top: -10px;
+  left: 8px;
+  font-size: 12px;
+  color: navy;
+}
+
+button {
+  background: linear-gradient(45deg, rgb(190, 29, 0), rgb(241, 89, 0));
+  width: 100%;
+  padding: 1rem 0;
+  margin-block: 2.5rem;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn-register {
+  margin-left: 5px;
+  color: crimson;
+  cursor: pointer;
+}
+
+.btn-register:hover {
+  text-decoration: underline;
+}
+
+.register {
+  transform: translateX(300px);
+  display: none;
+  transition: 0.3s linear;
+}
+
+.register.active {
+  transform: translateX(0);
+  display: block;
+}
+
+.btn-login {
+  margin-left: 5px;
+  color: crimson;
+  cursor: pointer;
+}
+
+.btn-login:hover {
+  text-decoration: underline;
+}
